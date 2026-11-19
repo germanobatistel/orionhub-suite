@@ -10,7 +10,7 @@ def connection():
     import psycopg
     url=os.environ.get('DATABASE_URL','')
     if not url: raise StoreError(503,'Banco não configurado.')
-    with psycopg.connect(url,connect_timeout=10,sslmode='require',options='-c statement_timeout=20000') as con:
+    with psycopg.connect(url,connect_timeout=10,sslmode='require') as con:
         yield con
 
 def encode(data):
